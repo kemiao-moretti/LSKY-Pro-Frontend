@@ -24,6 +24,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 版本号唯一来源：config/convention.php 的 AppVersion（后台「关于」显示的那个）
+      # 'V 2.1' → 去掉 V 和空格 → 2.1
+      - name: Read app version
+        id: appver
+        run: |
+          RAW=$(grep -oP "ConfigKey::AppVersion\s*=>\s*'\K[^']+" config/convention.php || true)
+          VER=$(printf '%s' "$RAW" | tr -d '[:space:]' | sed 's/^[Vv]//' | tr -cd '0-9A-Za-z._-')
+          if [ -n "$VER" ]; then
+            echo "解析到版本号：$VER"
+          else
+            echo "::warning::config/convention.php 里没解析到 AppVersion（读到：$RAW），本次只打 latest"
+          fi
+          echo "version=$VER" >> "$GITHUB_OUTPUT"
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -44,8 +58,9 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
+          # latest 恒定产出；版本号解析失败时该行解析为空行，不会被当成标签
           tags: |
             ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ steps.appver.outputs.version && format('{0}:{1}', env.IMAGE_NAME, steps.appver.outputs.version) }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
