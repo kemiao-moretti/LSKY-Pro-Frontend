@@ -1,17 +1,23 @@
 FROM php:8.1 AS build
 WORKDIR /build
 
-# 安装必要的依赖
+# unzip 必须装：composer.json 里 preferred-install=dist，Composer 只下 zip 包、不走 source 回退，
+# 而 php:8.1 基础镜像既无 zip 扩展也无 unzip 命令。删了会直接构建失败。
 RUN apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl unzip && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# 直接使用当前仓库源码（含 resources/ 与已编译的 public/css），不再从上游拉取
+# 先只拷依赖清单，这层可缓存：只改视图/样式时不会重装 158 个包
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --prefer-dist --no-scripts --no-autoloader
+
+# 再拷全量源码（含 resources/ 与已编译的 public/css），不再从上游拉取
 COPY . .
 
+# dump-autoload 会触发 post-autoload-dump → artisan package:discover
 RUN php -r "file_exists('.env') || copy('.env.example', '.env');" \
-    && composer install --no-interaction --prefer-dist
+    && composer dump-autoload --optimize --no-interaction
 
 FROM php:8.1-apache
 
@@ -62,10 +68,10 @@ COPY ./ports.conf.template /etc/apache2/
 COPY entrypoint.sh /
 WORKDIR /var/www/html/
 VOLUME /var/www/html
-ENV WEB_PORT 8089
-ENV HTTPS_PORT 8088
-EXPOSE ${WEB_PORT}
-EXPOSE ${HTTPS_PORT}
+ENV WEB_PORT=8089
+ENV HTTPS_PORT=8088
+EXPOSE 8089
+EXPOSE 8088
 RUN chmod a+x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apachectl","-D","FOREGROUND"]
