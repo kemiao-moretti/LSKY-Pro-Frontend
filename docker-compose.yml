@@ -1,0 +1,34 @@
+services:
+  lskypro:
+    image: ghcr.io/kemiao-moretti/lsky-pro-frontend:latest
+    restart: unless-stopped
+    hostname: lskypro
+    container_name: lskypro
+    environment:
+      - WEB_PORT=8089
+    volumes:
+      - ./web:/var/www/html/
+    ports:
+      - "9080:8089"
+    networks:
+      - lsky-net
+
+  # 注：arm64 无法使用该 MySQL 镜像，请选择 SQLite 或自建数据库
+  mysql-lsky:
+    image: mysql:5.7.22
+    restart: unless-stopped
+    hostname: mysql-lsky
+    container_name: mysql-lsky
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql
+      - ./mysql/log:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: lAsWjb6rzSzENUYg # 数据库 root 用户密码，自行修改
+      MYSQL_DATABASE: lsky-data
+    networks:
+      - lsky-net
+
+networks:
+  lsky-net: {}

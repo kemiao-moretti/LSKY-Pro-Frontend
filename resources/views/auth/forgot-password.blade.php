@@ -30,7 +30,7 @@
 
             <button type="submit"
                 class="w-full py-2.5 px-4 rounded-lg text-white text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-                style="background: linear-gradient(135deg, #059669, #0d9488); box-shadow: 0 4px 14px rgba(16,185,129,0.4);">
+                style="background: var(--btn-bg); box-shadow: var(--btn-shadow);">
                 <i class="fas fa-paper-plane mr-2"></i>{{ __('Email Password Reset Link') }}
             </button>
         </form>

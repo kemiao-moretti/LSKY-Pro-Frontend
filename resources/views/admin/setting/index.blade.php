@@ -156,7 +156,7 @@
                 <div>
                     <label for="custom_css" class="block text-sm font-medium text-slate-700">自定义 CSS</label>
                     <p class="text-xs text-slate-400 mb-1.5">自定义样式将注入到所有页面的 &lt;head&gt; 中，无需包裹 &lt;style&gt; 标签</p>
-                    <x-textarea name="custom_css" id="custom_css" placeholder="/* 例如：修改主题色 */&#10;:root { --primary: #ef4444; }" rows="8" spellcheck="false">{{ $configs->get('custom_css') }}</x-textarea>
+                    <x-textarea name="custom_css" id="custom_css" placeholder="/* 例如：修改主题色 */&#10;:root { --primary: var(--danger); }" rows="8" spellcheck="false">{{ $configs->get('custom_css') }}</x-textarea>
                 </div>
                 <div>
                     <label for="custom_js" class="block text-sm font-medium text-slate-700">自定义 JavaScript</label>

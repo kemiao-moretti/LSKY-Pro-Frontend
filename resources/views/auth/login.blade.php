@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <div class="mb-8">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: rgba(16,185,129,0.08); color: #059669; border: 1px solid rgba(16,185,129,0.18);">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4" style="background: var(--primary-soft); color: var(--primary); border: 1px solid var(--border-color);">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 欢迎回来
             </div>
@@ -59,7 +59,7 @@
             <div class="pt-1">
                 <button type="submit"
                     class="w-full py-3 px-4 rounded-xl text-white text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 flex items-center justify-center gap-2"
-                    style="background: linear-gradient(135deg, #059669, #0d9488); box-shadow: 0 4px 16px rgba(16,185,129,0.35);">
+                    style="background: var(--btn-bg); box-shadow: var(--btn-shadow);">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>立即登录</span>
                 </button>

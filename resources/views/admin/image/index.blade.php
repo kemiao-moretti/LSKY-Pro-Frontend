@@ -3,8 +3,8 @@
 <x-app-layout>
     <div class="p-2">
         <div class="mb-2 mt-4 flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(13,148,136,0.15));">
-                <i class="fas fa-photo-video text-sm" style="color: #059669;"></i>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--primary-soft);">
+                <i class="fas fa-photo-video text-sm" style="color: var(--primary);"></i>
             </div>
             <h2 class="font-bold text-lg text-slate-800">图片管理</h2>
         </div>

@@ -5,7 +5,7 @@
     {{-- Brand / Logo --}}
     <div class="px-5 h-14 flex justify-between items-center flex-shrink-0 border-b" style="background: var(--sidebar-surface); border-color: var(--sidebar-border);">
         <a href="/" class="flex items-center gap-2 truncate">
-            <span class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #10b981, #0d9488);">
+            <span class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--btn-bg);">
                 <i class="fas fa-feather-alt text-white text-sm"></i>
             </span>
             <span class="font-bold text-base truncate gradient-text">{{ \App\Utils::config(\App\Enums\ConfigKey::AppName) }}</span>

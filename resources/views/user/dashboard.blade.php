@@ -1,86 +1,50 @@
 @section('title', '仪表盘')
 
-@push('styles')
-    <style>
-        html.dark .dashboard-stat-card {
-            border-color: rgba(125, 146, 177, 0.34) !important;
-            box-shadow: 0 12px 30px rgba(2, 6, 23, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
-        }
-
-        html.dark .dashboard-stat-card:nth-child(1) { background: linear-gradient(135deg, rgba(110, 231, 183, 0.24), rgba(45, 212, 191, 0.16)), linear-gradient(135deg, rgba(22,35,56,0.92), rgba(29,52,72,0.9)) !important; }
-        html.dark .dashboard-stat-card:nth-child(2) { background: linear-gradient(135deg, rgba(125, 211, 252, 0.24), rgba(103, 232, 249, 0.14)), linear-gradient(135deg, rgba(22,35,56,0.92), rgba(27,51,76,0.9)) !important; }
-        html.dark .dashboard-stat-card:nth-child(3) { background: linear-gradient(135deg, rgba(252, 165, 165, 0.22), rgba(251, 113, 133, 0.15)), linear-gradient(135deg, rgba(38,35,54,0.92), rgba(58,41,58,0.88)) !important; }
-        html.dark .dashboard-stat-card:nth-child(4) { background: linear-gradient(135deg, rgba(253, 230, 138, 0.20), rgba(203, 213, 225, 0.14)), linear-gradient(135deg, rgba(24,36,55,0.92), rgba(50,52,65,0.88)) !important; }
-
-        html.dark .dashboard-stat-card p:first-child {
-            color: rgba(226, 232, 240, 0.78) !important;
-        }
-
-        html.dark .dashboard-stat-card p:last-child {
-            color: #f4f9ff !important;
-        }
-
-        html.dark .dashboard-stat-card i {
-            color: rgba(236, 253, 245, 0.92) !important;
-        }
-
-        html.dark .dashboard-capacity-card {
-            background: linear-gradient(135deg, rgba(22,35,56,0.96), rgba(26,42,65,0.92)) !important;
-            border-color: rgba(94,112,139,0.48) !important;
-            box-shadow: 0 12px 30px rgba(2,6,23,0.16) !important;
-        }
-
-        html.dark .dashboard-capacity-track {
-            background: rgba(44,59,83,0.82) !important;
-        }
-    </style>
-@endpush
-
 <x-app-layout>
     <div class="my-6 md:my-8 space-y-6">
         {{-- 统计卡片 --}}
         <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
             {{-- 图片数量 --}}
-            <div class="dashboard-stat-card stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid rgba(16,185,129,0.2); box-shadow: 0 4px 20px rgba(16,185,129,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.15);">
-                    <i class="fas fa-images text-xl" style="color: #059669;"></i>
+            <div class="dashboard-stat-card stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-images text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">图片数量</p>
-                    <p class="font-bold text-2xl mt-0.5" style="color: #065f46;">{{ $user->image_num }}</p>
+                    <p class="text-xs font-medium text-slate-500">图片数量</p>
+                    <p class="font-bold text-2xl mt-0.5 text-slate-900">{{ $user->image_num }}</p>
                 </div>
             </div>
 
             {{-- 可用储存 --}}
-            <div class="dashboard-stat-card stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1px solid rgba(14,165,233,0.2); box-shadow: 0 4px 20px rgba(14,165,233,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(14,165,233,0.15);">
-                    <i class="fas fa-database text-xl" style="color: #0284c7;"></i>
+            <div class="dashboard-stat-card stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-database text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">可用储存</p>
-                    <p class="font-bold text-xl mt-0.5 leading-tight" style="color: #0c4a6e;">{{ \App\Utils::formatSize(($user->capacity - $user->use_capacity) * 1024) }}</p>
+                    <p class="text-xs font-medium text-slate-500">可用储存</p>
+                    <p class="font-bold text-xl mt-0.5 leading-tight text-slate-900">{{ \App\Utils::formatSize(($user->capacity - $user->use_capacity) * 1024) }}</p>
                 </div>
             </div>
 
             {{-- 已用储存 --}}
-            <div class="dashboard-stat-card stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f0fdfa, #fbcccc); border: 1px solid rgba(184, 83, 20, 0.2); box-shadow: 0 4px 20px rgba(20,184,166,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(184, 20, 20, 0.15);">
-                    <i class="fas fa-hdd text-xl" style="color: #940d0d;"></i>
+            <div class="dashboard-stat-card stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-hdd text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">使用储存</p>
-                    <p class="font-bold text-xl mt-0.5 leading-tight" style="color: #4e1313;">{{ \App\Utils::formatSize($user->use_capacity * 1024) }}</p>
+                    <p class="text-xs font-medium text-slate-500">使用储存</p>
+                    <p class="font-bold text-xl mt-0.5 leading-tight text-slate-900">{{ \App\Utils::formatSize($user->use_capacity * 1024) }}</p>
                 </div>
             </div>
 
             {{-- 总储存 --}}
-            <div class="dashboard-stat-card stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f8fafc, #fffde8); border: 1px solid rgba(139, 138, 100, 0.18); box-shadow: 0 4px 20px rgba(100,116,139,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(100,116,139,0.1);">
-                    <i class="fas fa-server text-xl" style="color: #64748b;"></i>
+            <div class="dashboard-stat-card stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-server text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">总储存</p>
-                    <p class="font-bold text-xl mt-0.5 leading-tight" style="color: #3b371e;">{{ \App\Utils::formatSize($user->capacity * 1024) }}</p>
+                    <p class="text-xs font-medium text-slate-500">总储存</p>
+                    <p class="font-bold text-xl mt-0.5 leading-tight text-slate-900">{{ \App\Utils::formatSize($user->capacity * 1024) }}</p>
                 </div>
             </div>
         </div>
@@ -90,18 +54,18 @@
             $usedKB   = $user->use_capacity;
             $totalKB  = $user->capacity > 0 ? $user->capacity : 1;
             $pct      = min(100, round($usedKB / $totalKB * 100, 1));
-            $barColor = $pct >= 90 ? 'linear-gradient(90deg,#ef4444,#f97316)' : ($pct >= 70 ? 'linear-gradient(90deg,#f97316,#fbbf24)' : 'linear-gradient(90deg,#10b981,#0d9488)');
+            $barColor = $pct >= 90 ? 'var(--danger)' : ($pct >= 70 ? 'var(--warning)' : 'var(--primary)');
         @endphp
         <div class="dashboard-capacity-card rounded-2xl p-5" style="background: var(--panel-bg-strong); border: 1px solid var(--border-strong); box-shadow: var(--card-shadow-hover);">
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2">
-                    <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: rgba(16,185,129,0.1);">
-                        <i class="fas fa-tachometer-alt text-xs" style="color: #10b981;"></i>
+                    <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: var(--primary-soft);">
+                        <i class="fas fa-tachometer-alt text-xs" style="color: var(--primary);"></i>
                     </div>
                     <span class="font-semibold text-slate-700 text-sm">储存空间使用情况</span>
                 </div>
                 <div class="text-right">
-                    <span class="text-xs font-bold {{ $pct >= 90 ? 'text-red-500' : ($pct >= 70 ? 'text-orange-500' : 'text-emerald-600') }}">{{ $pct }}%</span>
+                    <span class="text-xs font-bold {{ $pct >= 90 ? 'text-red-500' : ($pct >= 70 ? 'text-orange-500' : 'text-token-primary') }}">{{ $pct }}%</span>
                     <span class="text-slate-400 text-xs ml-1">已使用</span>
                 </div>
             </div>
@@ -127,8 +91,8 @@
                             <div class="divide-y divide-slate-100/80">
                                 @foreach ($strategies as $strategy)
                                     <div class="dashboard-strategy-item flex items-start gap-3 px-5 py-3.5 transition-colors duration-150">
-                                        <div class="mt-0.5 w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.1);">
-                                            <i class="fas fa-server text-xs" style="color: #10b981;"></i>
+                                        <div class="mt-0.5 w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                                            <i class="fas fa-server text-xs" style="color: var(--primary);"></i>
                                         </div>
                                         <div class="flex-1 min-w-0">
                                             <p class="text-slate-800 font-semibold text-sm">{{ $strategy->name }}</p>
@@ -158,8 +122,8 @@
                             ]; @endphp
                             @foreach($infoItems as $i => $item)
                             <div class="flex items-center gap-3 py-2.5 {{ $i < count($infoItems)-1 ? 'border-b border-slate-100/80' : '' }}">
-                                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.08);">
-                                    <i class="fas {{ $item['icon'] }} text-xs" style="color: #059669;"></i>
+                                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                                    <i class="fas {{ $item['icon'] }} text-xs" style="color: var(--primary);"></i>
                                 </div>
                                 <div class="flex-1 min-w-0 flex items-center justify-between gap-2">
                                     <p class="text-slate-400 text-xs flex-shrink-0">{{ $item['label'] }}</p>
@@ -168,7 +132,7 @@
                             </div>
                             @endforeach
                             @if(\App\Utils::config(\App\Enums\ConfigKey::IsUserNeedVerify) && !$user->email_verified_at)
-                                <div class="mt-3 p-3 text-sm rounded-xl text-white flex items-start gap-2" style="background: linear-gradient(135deg, #f97316, #ef4444);">
+                                <div class="mt-3 p-3 text-sm rounded-xl text-white flex items-start gap-2" style="background: var(--danger);">
                                     <i class="fas fa-exclamation-circle mt-0.5 flex-shrink-0"></i>
                                     <span>账号尚未激活，请点击
                                         <a id="send-verify-email" href="javascript:void(0)" class="underline font-semibold">重新发送</a>激活邮件。
@@ -196,8 +160,8 @@
                             ]; @endphp
                             @foreach($groupItems as $i => $item)
                             <div class="flex items-center gap-3 py-2.5 {{ $i < count($groupItems)-1 ? 'border-b border-slate-100/80' : '' }}">
-                                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.08);">
-                                    <i class="fas {{ $item['icon'] }} text-xs" style="color: #059669;"></i>
+                                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                                    <i class="fas {{ $item['icon'] }} text-xs" style="color: var(--primary);"></i>
                                 </div>
                                 <div class="flex-1 min-w-0 flex items-center justify-between gap-2">
                                     <p class="text-slate-400 text-xs flex-shrink-0">{{ $item['label'] }}</p>

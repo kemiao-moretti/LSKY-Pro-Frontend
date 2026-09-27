@@ -26,15 +26,18 @@
         })();
     </script>
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://jsd.liiiu.cn/gh/willow-god/Sharding-fonts/ZhuqueFangsong-Regular/result.min.css">
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
     @stack('styles')
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/common.css') }}?t=20260302">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}?t=20260302">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}?t=20260927-2">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?t=20260927-2">
     <style>
-        body { font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC', 'WenQuanYi Micro Hei', sans-serif; }
+        body { font-family: var(--font-body); }
     </style>
     @include('layouts.custom-code-loader', ['type' => 'css'])
 </head>
@@ -74,7 +77,7 @@
 </div>
 </body>
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}?t=20220817"></script>
+<script src="{{ asset('js/app.js') }}?t=20260927"></script>
 @include('common.notice')
 <script>
     // 开关组件默认值

@@ -83,7 +83,7 @@
             <div id="images-grid" class="dragselect"></div>
         </div>
         <!-- right drawer -->
-        <div id="drawer-mask" class="absolute hidden inset-0 z-[2]" style="background: rgba(2, 6, 23, 0.56); backdrop-filter: blur(2px);" onclick="drawer.close()"></div>
+        <div id="drawer-mask" class="absolute hidden inset-0 z-[2]" style="background: var(--overlay); backdrop-filter: blur(2px);" onclick="drawer.close()"></div>
         <div id="drawer" class="absolute w-64 md:w-72 top-0 -right-[1000px] bottom-0 z-[2] flex flex-col transition-all duration-300" style="background: var(--drawer-bg); border-left: 1px solid var(--drawer-border); box-shadow: -12px 0 32px rgba(0,0,0,0.18);">
             <div class="flex justify-between items-center text-md px-3 py-1 border-b" style="border-color: var(--drawer-border);">
                 <span class="truncate text-[var(--text-secondary)]" id="drawer-title"></span>
@@ -117,7 +117,7 @@
                 <form class="w-full space-y-2" action="/user/albums">
                     <input type="text" class="w-full rounded px-2.5 py-1.5 text-sm border-0 bg-gray-200" name="name" placeholder="请输入名称">
                     <textarea class="w-full resize-y rounded-md text-sm border-0 bg-gray-200" name="intro" placeholder="请输入简介"></textarea>
-                    <button class="w-full py-1 px-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm text-center tracking-wider font-semibold rounded-md transition-colors">创建相册</button>
+                    <button class="w-full py-1 px-2 text-sm text-center tracking-wider font-semibold rounded-md transition-colors hover:brightness-105" style="background: var(--btn-bg); color: var(--btn-fg);">创建相册</button>
                 </form>
             </div>
         </div>
@@ -140,7 +140,7 @@
             <form class="w-full space-y-2" action="/user/albums/__id__">
                 <input type="text" class="w-full rounded px-2.5 py-1.5 text-sm border-0 bg-gray-200" placeholder="请输入名称" name="name" value="__name__">
                 <textarea class="w-full resize-y rounded-md text-sm border-0 bg-gray-200" name="intro" placeholder="请输入简介">__intro__</textarea>
-                <button class="w-full py-1 px-2 bg-emerald-500 hover:bg-emerald-600 text-white text-sm text-center tracking-wider font-semibold rounded-md transition-colors">确认修改</button>
+                <button class="w-full py-1 px-2 text-sm text-center tracking-wider font-semibold rounded-md transition-colors hover:brightness-105" style="background: var(--btn-bg); color: var(--btn-fg);">确认修改</button>
             </form>
         </div>
     </script>
@@ -391,8 +391,8 @@
                             text: "删除后相册中的图片将会被移出。",
                             icon: 'warning',
                             showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
+                            confirmButtonColor: 'var(--primary)',
+                            cancelButtonColor: 'var(--text-muted)',
                             confirmButtonText: '确认',
                         }).then((result) => {
                             if (result.isConfirmed) {

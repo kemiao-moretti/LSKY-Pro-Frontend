@@ -8,3 +8,7 @@
 
 /.github export-ignore
 CHANGELOG.md export-ignore
+
+Dockerfile text eol=lf
+*.sh text eol=lf
+*.template text eol=lf

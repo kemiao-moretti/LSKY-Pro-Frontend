@@ -35,8 +35,8 @@
             @endif
 
             <div class="mb-5 flex items-center gap-2.5">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(13,148,136,0.15));">
-                    <i class="fas fa-user-cog text-sm" style="color: #059669;"></i>
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--primary-soft);">
+                    <i class="fas fa-user-cog text-sm" style="color: var(--primary);"></i>
                 </div>
                 <h2 class="font-bold text-lg text-slate-800">基础设置</h2>
             </div>
@@ -128,8 +128,8 @@
             @if($showOauthSection)
                 <div class="mt-8 w-full">
                     <div class="mb-5 flex items-start gap-3">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(13,148,136,0.14)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);">
-                            <i class="fas fa-shield-alt text-sm" style="color: #059669;"></i>
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: var(--primary-soft); ">
+                            <i class="fas fa-shield-alt text-sm" style="color: var(--primary);"></i>
                         </div>
                         <div>
                             <h2 class="font-bold text-lg text-slate-800 leading-none">OAuth 账号绑定</h2>
@@ -155,7 +155,7 @@
                                     <div class="rounded-2xl px-4 py-4 sm:px-5 transition-all duration-200 hover:shadow-md" style="background: var(--panel-bg); border: 1px solid var(--border-color);">
                                         <div class="flex flex-col gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-center md:gap-6">
                                             <div class="min-w-0 flex items-start gap-3.5 sm:items-center">
-                                                <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-white" style="background: linear-gradient(135deg, #059669, #0d9488); box-shadow: 0 6px 18px rgba(16,185,129,0.22);">
+                                                <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style="background: var(--btn-bg); color: var(--btn-fg); box-shadow: var(--btn-shadow);">
                                                     <i class="fas fa-link text-sm"></i>
                                                 </span>
                                                 <div class="min-w-0 flex-1">
@@ -176,7 +176,7 @@
                                             <div class="flex w-full items-center justify-end md:w-auto md:shrink-0">
                                                 <button type="button" onclick="unbindOAuth({{ $account->id }})"
                                                     class="inline-flex w-full items-center justify-center gap-1.5 py-2 px-5 text-sm font-semibold rounded-lg text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 sm:w-auto"
-                                                    style="background: linear-gradient(135deg, #059669, #0d9488); box-shadow: 0 2px 10px rgba(16,185,129,0.3);">
+                                                    style="background: var(--btn-bg); box-shadow: var(--btn-shadow);">
                                                     <i class="fas fa-unlink text-xs"></i>
                                                     <span>解绑账号</span>
                                                 </button>
@@ -221,7 +221,7 @@
                             </div>
                         @else
                             <div class="flex justify-end">
-                                <a href="{{ route('oauth.bind.redirect') }}" class="inline-flex w-full items-center justify-center gap-1.5 py-2.5 px-5 text-sm font-semibold rounded-lg text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 sm:w-auto" style="background: linear-gradient(135deg, #059669, #0d9488); box-shadow: 0 2px 10px rgba(16,185,129,0.3);">
+                                <a href="{{ route('oauth.bind.redirect') }}" class="inline-flex w-full items-center justify-center gap-1.5 py-2.5 px-5 text-sm font-semibold rounded-lg transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 sm:w-auto" style="background: var(--btn-bg); color: var(--btn-fg); box-shadow: var(--btn-shadow);">
                                     <i class="fas fa-plus"></i>
                                     <span>绑定账号</span>
                                 </a>
@@ -278,8 +278,8 @@
                     didOpen: () => {
                         const confirmButton = Swal.getConfirmButton();
                         if (confirmButton) {
-                            confirmButton.style.background = 'linear-gradient(135deg, #059669, #0d9488)';
-                            confirmButton.style.boxShadow = '0 2px 10px rgba(16,185,129,0.3)';
+                            confirmButton.style.background = 'var(--btn-bg)';
+                            confirmButton.style.boxShadow = 'var(--btn-shadow)';
                         }
                         const cancelButton = Swal.getCancelButton();
                         if (cancelButton) {

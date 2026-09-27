@@ -3,8 +3,8 @@
 <x-app-layout>
     <div class="my-6 md:my-8">
         <div class="mb-5 flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(13,148,136,0.15));">
-                <i class="fas fa-users text-sm" style="color: #059669;"></i>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--primary-soft);">
+                <i class="fas fa-users text-sm" style="color: var(--primary);"></i>
             </div>
             <h2 class="font-bold text-lg text-slate-800">用户管理</h2>
         </div>
@@ -31,7 +31,7 @@
                 <td class="px-5 py-3.5 whitespace-nowrap text-sm font-medium text-slate-800">{{ $user->name }}</td>
                 <td class="px-5 py-3.5 whitespace-nowrap text-sm text-slate-600">{{ $user->email }}</td>
                 <td class="px-5 py-3.5 whitespace-nowrap">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" style="background: rgba(16,185,129,0.1); color: #059669;">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium" style="background: var(--primary-soft); color: var(--primary);">
                         {{ $user->group->name ?? '默认' }}
                     </span>
                 </td>
@@ -41,11 +41,11 @@
                 <td class="px-5 py-3.5 whitespace-nowrap text-sm text-slate-600">{{ $user->album_num }}</td>
                 <td class="px-5 py-3.5 whitespace-nowrap">
                     @if($user->status)
-                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium" style="background: rgba(16,185,129,0.1); color: #059669;">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium" style="background: var(--primary-soft); color: var(--primary);">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>正常
                         </span>
                     @else
-                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium" style="background: rgba(239,68,68,0.1); color: #dc2626;">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium" style="background: var(--danger-soft); color: var(--danger);">
                             <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>冻结
                         </span>
                     @endif

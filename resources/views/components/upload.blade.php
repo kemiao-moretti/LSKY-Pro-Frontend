@@ -8,7 +8,7 @@
         <div class="px-5 py-3.5 flex items-center justify-between" style="border-bottom: 1px solid var(--border-strong); background: var(--card-header-bg);">
             <div class="flex items-center gap-2.5">
                 <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #10b981, #0d9488);">
+                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" style="background: var(--btn-bg);">
                         <i class="fas fa-cloud-upload-alt text-white text-xs"></i>
                     </div>
                     <span class="font-semibold text-sm text-[var(--text-primary)]">上传图片</span>
@@ -44,8 +44,8 @@
                     <i id="clear" class="fas fa-times absolute top-3 right-3 w-7 h-7 flex justify-center items-center cursor-pointer text-base hidden group-hover:flex text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-150 z-10"></i>
                     {{-- 上传图标 --}}
                     <div id="upload-all" title="点我上传全部" class="flex flex-col items-center gap-3">
-                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-200" style="background: rgba(16,185,129,0.1);">
-                            <i class="fas fa-cloud-upload-alt text-3xl" style="color: #10b981;"></i>
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-200" style="background: var(--primary-soft);">
+                            <i class="fas fa-cloud-upload-alt text-3xl" style="color: var(--primary);"></i>
                         </div>
                         <div class="text-center space-y-1">
                             <p class="text-sm font-medium text-[var(--text-secondary)]">拖拽文件到此处，或点击图标选择上传</p>
@@ -64,7 +64,7 @@
         <div class="px-5 py-3.5 flex items-center justify-between" style="border-bottom: 1px solid var(--border-strong); background: var(--card-header-bg);">
             <div class="flex items-center gap-2.5">
                 <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #10b981, #0d9488);">
+                    <div class="w-6 h-6 rounded-lg flex items-center justify-center" style="background: var(--btn-bg);">
                         <i class="fas fa-link text-white text-xs"></i>
                     </div>
                     <span class="font-semibold text-sm text-[var(--text-primary)]">图片链接</span>
@@ -113,7 +113,7 @@
 <script type="text/html" id="image-preview-tpl">
     <div data-id="__id__" class="flex items-center gap-3 p-2.5 rounded-xl relative overflow-hidden m-2 pr-2" style="background: var(--panel-bg); border: 1px solid var(--border-strong);">
         <div class="absolute inset-0 rounded-xl overflow-hidden" style="pointer-events:none;">
-            <div class="h-full upload-progress transition-all duration-300" style="width:0%; background: linear-gradient(90deg,rgba(16,185,129,0.08),rgba(13,148,136,0.06));"></div>
+            <div class="h-full upload-progress transition-all duration-300" style="width:0%; background: var(--primary);"></div>
         </div>
         <div class="relative w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 cursor-pointer" style="border: 1px solid var(--border-strong);">
             <img class="w-full h-full object-cover" data-operate="preview" src="__src__">
@@ -127,10 +127,10 @@
         <div class="relative flex items-center gap-1.5 flex-shrink-0">
             <a href="javascript:void(0)" data-operate="upload"
                class="w-8 h-8 rounded-lg flex items-center justify-center text-emerald-600 transition-all duration-150"
-               style="background: rgba(16,185,129,0.1);"><i class="fas fa-upload text-xs"></i></a>
+               style="background: var(--primary-soft);"><i class="fas fa-upload text-xs"></i></a>
             <a href="javascript:void(0)" data-operate="remove"
                class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-300 transition-all duration-150"
-               style="background: rgba(241,245,249,1);"><i class="fas fa-times text-xs"></i></a>
+               style="background: var(--code-bg);"><i class="fas fa-times text-xs"></i></a>
         </div>
     </div>
 </script>
@@ -309,7 +309,7 @@
                     // 追加链接
                     let links = response.data.links;
                     for (let key in links) {
-                        $('#links [data-tab="' + key + '"]').append('<p class="whitespace-nowrap select-all rounded-lg px-3 py-2.5 cursor-pointer overflow-x-auto scrollbar-none text-xs font-mono text-slate-600 dark:text-slate-200 transition-all duration-150" style="background:var(--code-bg); border:1px solid var(--code-border);" onmouseenter="this.style.borderColor=\'rgba(16,185,129,0.25)\';" onmouseleave="this.style.borderColor=\'var(--code-border)\';">' + links[key].toString() + '</p>')
+                        $('#links [data-tab="' + key + '"]').append('<p class="whitespace-nowrap select-all rounded-lg px-3 py-2.5 cursor-pointer overflow-x-auto scrollbar-none text-xs font-mono text-slate-600 dark:text-slate-200 transition-all duration-150" style="background:var(--code-bg); border:1px solid var(--code-border);" onmouseenter="this.style.borderColor=\'var(--primary)\';" onmouseleave="this.style.borderColor=\'var(--code-border)\';">' + links[key].toString() + '</p>')
                     }
                     $links.show();
                     utils.setCapacityProgress(response.data.size);

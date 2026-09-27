@@ -4,8 +4,8 @@
     <div class="my-6 md:my-8 max-w-5xl">
         <div class="mb-5 flex items-center justify-between gap-3">
             <div class="flex items-center gap-2.5 min-w-0">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(13,148,136,0.15));">
-                    <i class="fas fa-key text-sm" style="color: #059669;"></i>
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-key text-sm" style="color: var(--primary);"></i>
                 </div>
                 <h2 class="font-bold text-lg text-slate-800 truncate">API 密钥管理</h2>
             </div>
@@ -251,7 +251,7 @@
                     <button type="button" @click="$store.modal.close('delete-token-modal')" class="px-5 py-2 text-sm font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">
                         取消
                     </button>
-                    <button type="button" id="btn-delete-token" onclick="confirmDeleteToken()" class="inline-flex items-center justify-center gap-1.5 py-2 px-5 text-sm font-semibold rounded-lg text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-red-500/50" style="background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 2px 10px rgba(239,68,68,0.3);">
+                    <button type="button" id="btn-delete-token" onclick="confirmDeleteToken()" class="inline-flex items-center justify-center gap-1.5 py-2 px-5 text-sm font-semibold rounded-lg text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-red-500/50" style="background: var(--danger); box-shadow: var(--btn-shadow);">
                         <i class="fas fa-trash-alt mr-1.5"></i>确认删除
                     </button>
                 </div>

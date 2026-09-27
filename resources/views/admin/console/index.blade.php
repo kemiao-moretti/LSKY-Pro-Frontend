@@ -1,34 +1,5 @@
 @section('title', '系统控制台')
 
-@push('styles')
-    <style>
-        html.dark .stat-card:nth-child(-n+4) {
-            border-color: rgba(125, 146, 177, 0.34) !important;
-            box-shadow: 0 12px 30px rgba(2, 6, 23, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
-        }
-
-        html.dark .stat-card:nth-child(1) { background: linear-gradient(135deg, rgba(110, 231, 183, 0.24), rgba(45, 212, 191, 0.16)), linear-gradient(135deg, rgba(22,35,56,0.92), rgba(29,52,72,0.9)) !important; }
-        html.dark .stat-card:nth-child(2) { background: linear-gradient(135deg, rgba(125, 211, 252, 0.24), rgba(103, 232, 249, 0.14)), linear-gradient(135deg, rgba(22,35,56,0.92), rgba(27,51,76,0.9)) !important; }
-        html.dark .stat-card:nth-child(3) { background: linear-gradient(135deg, rgba(153, 246, 228, 0.22), rgba(94, 234, 212, 0.14)), linear-gradient(135deg, rgba(22,35,56,0.92), rgba(27,57,70,0.88)) !important; }
-        html.dark .stat-card:nth-child(4) { background: linear-gradient(135deg, rgba(226, 232, 240, 0.16), rgba(148, 163, 184, 0.12)), linear-gradient(135deg, rgba(24,36,55,0.92), rgba(45,58,78,0.88)) !important; }
-
-        html.dark .stat-card:nth-child(-n+4) p:first-child,
-        html.dark .stat-card:nth-child(-n+4) i {
-            color: rgba(226, 232, 240, 0.82) !important;
-        }
-
-        html.dark .stat-card:nth-child(-n+4) p:last-child {
-            color: #f4f9ff !important;
-        }
-
-        html.dark .stat-card:nth-child(n+5) {
-            background: linear-gradient(135deg, rgba(22,35,56,0.96), rgba(26,42,65,0.92)) !important;
-            border: 1px solid rgba(94,112,139,0.46);
-            box-shadow: 0 12px 28px rgba(2,6,23,0.14) !important;
-        }
-    </style>
-@endpush
-
 <x-app-layout>
     @if(config('app.debug'))
         <p class="mt-4 p-2 rounded-md text-sm bg-red-500 text-white">
@@ -40,51 +11,51 @@
         <p class="admin-section-title">概览</p>
         <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {{-- 图片数量 --}}
-            <div class="stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid rgba(16,185,129,0.2); box-shadow: 0 4px 20px rgba(16,185,129,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.15);">
-                    <i class="fas fa-images text-xl" style="color: #059669;"></i>
+            <div class="stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-images text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">图片数量</p>
-                    <p class="font-bold text-2xl mt-0.5" style="color: #065f46;">{{ \App\Utils::shortenNumber(\App\Models\Image::query()->count()) }}</p>
+                    <p class="text-xs font-medium text-slate-500">图片数量</p>
+                    <p class="font-bold text-2xl mt-0.5 text-slate-900">{{ \App\Utils::shortenNumber(\App\Models\Image::query()->count()) }}</p>
                 </div>
             </div>
             {{-- 相册数量 --}}
-            <div class="stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1px solid rgba(14,165,233,0.2); box-shadow: 0 4px 20px rgba(14,165,233,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(14,165,233,0.15);">
-                    <i class="fas fa-tags text-xl" style="color: #0284c7;"></i>
+            <div class="stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-tags text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">相册数量</p>
-                    <p class="font-bold text-2xl mt-0.5" style="color: #0c4a6e;">{{ \App\Utils::shortenNumber(\App\Models\Album::query()->count()) }}</p>
+                    <p class="text-xs font-medium text-slate-500">相册数量</p>
+                    <p class="font-bold text-2xl mt-0.5 text-slate-900">{{ \App\Utils::shortenNumber(\App\Models\Album::query()->count()) }}</p>
                 </div>
             </div>
             {{-- 用户数量 --}}
-            <div class="stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f0fdfa, #ccfbf1); border: 1px solid rgba(20,184,166,0.2); box-shadow: 0 4px 20px rgba(20,184,166,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(20,184,166,0.15);">
-                    <i class="fas fa-users text-xl" style="color: #0d9488;"></i>
+            <div class="stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-users text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">用户数量</p>
-                    <p class="font-bold text-2xl mt-0.5" style="color: #134e4a;">{{ \App\Utils::shortenNumber(\App\Models\User::query()->count()) }}</p>
+                    <p class="text-xs font-medium text-slate-500">用户数量</p>
+                    <p class="font-bold text-2xl mt-0.5 text-slate-900">{{ \App\Utils::shortenNumber(\App\Models\User::query()->count()) }}</p>
                 </div>
             </div>
             {{-- 占用储存 --}}
-            <div class="stat-card rounded-2xl p-5 flex items-center gap-4 relative overflow-hidden" style="background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 1px solid rgba(100,116,139,0.18); box-shadow: 0 4px 20px rgba(100,116,139,0.1);">
-                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(100,116,139,0.1);">
-                    <i class="fas fa-server text-xl" style="color: #64748b;"></i>
+            <div class="stat-card surface-card rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-server text-xl" style="color: var(--primary);"></i>
                 </div>
                 <div>
-                    <p class="text-xs font-medium" style="color: #6b7280;">占用储存</p>
-                    <p class="font-bold text-xl mt-0.5 leading-tight" style="color: #1e293b;">{{ \App\Utils::formatSize(\App\Models\Image::query()->sum('size') * 1024) }}</p>
+                    <p class="text-xs font-medium text-slate-500">占用储存</p>
+                    <p class="font-bold text-xl mt-0.5 leading-tight text-slate-900">{{ \App\Utils::formatSize(\App\Models\Image::query()->sum('size') * 1024) }}</p>
                 </div>
             </div>
 
             {{-- 上传统计 4 项 --}}
             @foreach([['today','今日上传'],['yesterday','昨日上传'],['week','本周上传'],['month','本月上传']] as [$key,$label])
-            <div class="stat-card flex items-center gap-4 rounded-xl bg-white p-4 shadow-custom" style="transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.08);">
-                    <i class="fas fa-upload text-emerald-500"></i>
+            <div class="stat-card surface-card flex items-center gap-4 rounded-xl p-4">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary-soft);">
+                    <i class="fas fa-upload" style="color: var(--primary);"></i>
                 </div>
                 <div>
                     <p class="font-bold text-xl text-slate-700">{{ \App\Utils::shortenNumber($numbers[$key]) }}</p>
@@ -145,19 +116,19 @@
                 <div class="bg-white px-5 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
                     <dt class="text-sm font-medium text-slate-500">官方网站</dt>
                     <dd class="mt-1 text-sm text-slate-700 sm:mt-0 sm:col-span-2">
-                        <a target="_blank" class="text-emerald-500 hover:text-emerald-600" href="https://www.lsky.pro">https://www.lsky.pro</a>
+                        <a target="_blank" class="text-token-primary text-token-primary-hover" href="https://www.lsky.pro">https://www.lsky.pro</a>
                     </dd>
                 </div>
                 <div class="bg-white px-5 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
                     <dt class="text-sm font-medium text-slate-500">使用手册</dt>
                     <dd class="mt-1 text-sm text-slate-700 sm:mt-0 sm:col-span-2">
-                        <a target="_blank" class="text-emerald-500 hover:text-emerald-600" href="https://docs.lsky.pro">https://docs.lsky.pro</a>
+                        <a target="_blank" class="text-token-primary text-token-primary-hover" href="https://docs.lsky.pro">https://docs.lsky.pro</a>
                     </dd>
                 </div>
                 <div class="bg-slate-50/60 px-5 py-4 sm:grid sm:grid-cols-3 sm:gap-4">
                     <dt class="text-sm font-medium text-slate-500">仓库地址</dt>
                     <dd class="mt-1 text-sm text-slate-700 sm:mt-0 sm:col-span-2">
-                        <a target="_blank" class="text-emerald-500 hover:text-emerald-600" href="https://github.com/lsky-org/lsky-pro">https://github.com/lsky-org/lsky-pro</a>
+                        <a target="_blank" class="text-token-primary text-token-primary-hover" href="https://github.com/lsky-org/lsky-pro">https://github.com/lsky-org/lsky-pro</a>
                     </dd>
                 </div>
             </dl>
